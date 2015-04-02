@@ -9,5 +9,5 @@ Plugin para wordpress que adiciona ao ACF a opção de campo de cidades brasilei
 
 1. Baixe o plugin
 2. Coloque os arquivos dentro da pasta de plugin /wp-content/plugins/
-3. Execute o SQL está na pasta resource/cities_states.sql (Obs. Caso o profixos das tabelas não seja "wp_" será ncessário alterar o SQL )
+3. Execute o SQL está na pasta resource/cities_states.sql (Obs. Caso o profixo das tabelas não seja "wp_" será ncessário alterar o SQL )
 4. Efetue o login no painel do wordpress e ative o plugin
