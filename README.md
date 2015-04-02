@@ -3,7 +3,7 @@ Advanced Custom Fields: Brazilian City
 
 ## Descrição
 
-Plugin para wordpress que adiciona ao ACF a opção de campo de cidades brasileiras considerando a seleção de Estado/Cidade.
+Plugin para wordpress que adiciona ao ACF a opção de cidades brasileiras provendo a seleção de Estado/Cidade.
 
 ## Instalação
 
