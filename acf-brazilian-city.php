@@ -2,7 +2,7 @@
 /*
 Plugin Name: Advanced Custom Fields: Brazilian City
 Description: Adiciona ao ACF a opção de campo de cidade considerando a seleção de Estado/Cidade.
-Plugin URI: 
+Plugin URI: https://github.com/luizhguimaraes/acf-brazilian-city
 Version: 1.0.0
 Author: Luiz Henrique Guimarães
 License: GPL
@@ -13,7 +13,6 @@ load_plugin_textdomain( 'acf-brazilian-city-field', false, dirname( plugin_basen
 // ACF Version 4.*
 function register_fields_brazilian_city() {
     include_once('acf-brazilian-city-field.php');
-    new acf_brazilian_city_field();
 }
 add_action('acf/register_fields', 'register_fields_brazilian_city');  
 

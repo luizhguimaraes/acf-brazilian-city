@@ -188,7 +188,6 @@ class acf_brazilian_city_field extends acf_field {
     }
 }
 
-
 add_action('wp_ajax_get_list_state_cities', 'get_list_state_cities');
 add_action('wp_ajax_nopriv_gt_list_state_cities', 'et_list_state_cities');
 /**
@@ -217,3 +216,5 @@ function get_list_state_cities()
     echo json_encode($cities);
     die();
 }
+
+new acf_brazilian_city_field();
