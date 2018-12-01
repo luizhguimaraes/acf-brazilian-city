@@ -20,25 +20,25 @@ class acf_brazilian_city_field extends acf_field {
         parent::__construct();
 
         $this->settings = array(
-            'path' => apply_filters('acf/helpers/get_path', __FILE__),
-            'dir' => apply_filters('acf/helpers/get_dir', __FILE__),
-            'version' => '1.0.1'
+            'version'   => '1.1.0',
+            'url'       => plugin_dir_url( __FILE__ ),
+            'path'      => plugin_dir_path( __FILE__ )
         );
     }
-    
-    
 
-    function create_field( $field )
+
+
+    function render_field( $field )
     {
         global $wpdb;
-        
+
         $field['value'] = isset($field['value']) ? $field['value'] : '';
-        
+
         $fieldName  = $field['name'];
         $city_id    = (isset($field['value']['city_id'])) ? $field['value']['city_id'] : 0;
         $state_id   = (isset($field['value']['state_id'])) ? $field['value']['state_id'] : 0;
 
-        
+
         $cities     = $this->list_cities($state_id);
 
         //Carregando Estados
@@ -48,7 +48,7 @@ class acf_brazilian_city_field extends acf_field {
         {
             $states[$state->id] = $state->name;
         }
-        
+
         ?>
 
             <ul class="country-selector-list">
@@ -58,7 +58,7 @@ class acf_brazilian_city_field extends acf_field {
                         <?php
 
                         $state_field = $field['name'] . '[state_id]';
-                        do_action('acf/create_field', array(
+                        acf_render_field(array(
                             'type'      =>  'select',
                             'name'    =>  $state_field,
                             'value'     =>  $state_id,
@@ -72,7 +72,7 @@ class acf_brazilian_city_field extends acf_field {
                         <?php
 
                         $city_field = $field['name'] . '[city_id]';
-                        do_action('acf/create_field', array(
+                        acf_render_field(array(
                             'type'    =>  'select',
                             'name'    =>  $city_field,
                             'value'   =>  $city_id,
@@ -85,7 +85,7 @@ class acf_brazilian_city_field extends acf_field {
 
         <?php
     }
-    
+
     function update_value($value, $post_id, $field)
     {
         $value['city_name']    = $this->city_name($value['city_id']);
@@ -96,18 +96,18 @@ class acf_brazilian_city_field extends acf_field {
 
     function format_value_for_api($value, $post_id, $field)
     {
-        
+
         $value['city_name']    = $this->city_name($value['city_id']);
         $value['state_name']   = (isset($value['state_id']) && $value['state_id'] !== 0) ? $this->state_name($value['state_id']) : '';
 
         return $value;
     }
-    
+
     function input_admin_enqueue_scripts()
     {
-        wp_register_script('acf-brazilian-city', $this->settings['dir'] . 'js/brazilian-city.js', array('acf-input'), $this->settings['version']);
-        wp_register_script('acf-input-chosen', $this->settings['dir'] . 'js/chosen.jquery.min.js', array('jquery'), $this->settings['version']);
-        wp_register_style('acf-input-chosen', $this->settings['dir'] . 'css/chosen.min.css', array(), $this->settings['version']);
+        wp_register_script('acf-brazilian-city', $this->settings['url'] . 'js/brazilian-city.js', array('acf-input'), $this->settings['version']);
+        wp_register_script('acf-input-chosen', $this->settings['url'] . 'js/chosen.jquery.min.js', array('jquery'), $this->settings['version']);
+        wp_register_style('acf-input-chosen', $this->settings['url'] . 'css/chosen.min.css', array(), $this->settings['version']);
 
         wp_localize_script( 'acf-brazilian-city', "AcfBrazilianCity", array(
             "ajaxurl" => admin_url("admin-ajax.php"),
@@ -125,7 +125,7 @@ class acf_brazilian_city_field extends acf_field {
         ));
     }
 
-    
+
 
 
     /**
@@ -138,7 +138,7 @@ class acf_brazilian_city_field extends acf_field {
     {
         global $wpdb;
         $cities_results = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix."cities WHERE state_id ='".$state_id."' ORDER BY name ASC");
-        $cities = array(); 
+        $cities = array();
 
         foreach ($cities_results AS $city)
         {

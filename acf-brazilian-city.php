@@ -14,7 +14,7 @@ load_plugin_textdomain( 'acf-brazilian-city-field', false, dirname( plugin_basen
 function register_fields_brazilian_city() {
     include_once('acf-brazilian-city-field.php');
 }
-add_action('acf/register_fields', 'register_fields_brazilian_city');  
+add_action('acf/include_field_types', 'register_fields_brazilian_city');
 
 // Activate and deactivate hooks
 //register_activation_hook( __FILE__, 'populate_db' );
@@ -38,4 +38,3 @@ function depopulate_db() {
     dbDelta( $sql );
 }
 */
-
