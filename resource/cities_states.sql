@@ -1,3 +1,56 @@
+# Dump of table wp_states
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `wp_states`;
+
+CREATE TABLE `wp_states` (
+  `id` char(2) NOT NULL,
+  `name` varchar(72) DEFAULT NULL,
+  `range_cep1_start` varchar(8) DEFAULT NULL,
+  `range_cep1_end` varchar(8) DEFAULT NULL,
+  `range_cep2_start` varchar(8) DEFAULT NULL,
+  `range_cep2_end` varchar(8) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+LOCK TABLES `wp_states` WRITE;
+/*!40000 ALTER TABLE `wp_states` DISABLE KEYS */;
+
+INSERT INTO `wp_states` (`id`, `name`, `range_cep1_start`, `range_cep1_end`, `range_cep2_start`, `range_cep2_end`)
+VALUES
+	('AC','Acre','69900000','69999999','',''),
+	('AL','Alagoas','57000000','57999999','',''),
+	('AM','Amazonas','69000000','69299999','69400000','69899999'),
+	('AP','Amapá','68900000','68999999','',''),
+	('BA','Bahia','40000000','48999999','',''),
+	('CE','Ceará','60000000','63999999','',''),
+	('DF','Distrito Federal','70000000','72799999','73000000','73699999'),
+	('ES','Espírito Santo','29000000','29999999','',''),
+	('GO','Goiás','72800000','72999999','73700000','76799999'),
+	('MA','Maranhão','65000000','65999999','',''),
+	('MG','Minas Gerais','30000000','39999999','',''),
+	('MS','Mato Grosso do Sul','79000000','79999999','',''),
+	('MT','Mato Grosso','78000000','78899999','',''),
+	('PA','Pará','66000000','68899999','',''),
+	('PB','Paraíba','58000000','58999999','',''),
+	('PE','Pernambuco','50000000','56999999','',''),
+	('PI','Piauí','64000000','64999999','',''),
+	('PR','Paraná','80000000','87999999','',''),
+	('RJ','Rio de Janeiro','20000000','28999999','',''),
+	('RN','Rio Grande do Norte','59000000','59999999','',''),
+	('RO','Rondônia','76800000','76999999','',''),
+	('RR','Roraima','69300000','69399999','',''),
+	('RS','Rio Grande do Sul','90000000','99999999','',''),
+	('SC','Santa Catarina','88000000','89999999','',''),
+	('SE','Sergipe','49000000','49999999','',''),
+	('SP','São Paulo','01000000','19999999','',''),
+	('TO','Tocantins','77000000','77999999','','');
+
+/*!40000 ALTER TABLE `wp_states` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
 # Dump of table wp_cities
 # ------------------------------------------------------------
 
@@ -10747,58 +10800,4 @@ VALUES
 
 /*!40000 ALTER TABLE `wp_cities` ENABLE KEYS */;
 UNLOCK TABLES;
-
-
-# Dump of table wp_states
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `wp_states`;
-
-CREATE TABLE `wp_states` (
-  `id` char(2) NOT NULL,
-  `name` varchar(72) DEFAULT NULL,
-  `range_cep1_start` varchar(8) DEFAULT NULL,
-  `range_cep1_end` varchar(8) DEFAULT NULL,
-  `range_cep2_start` varchar(8) DEFAULT NULL,
-  `range_cep2_end` varchar(8) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `id_UNIQUE` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-LOCK TABLES `wp_states` WRITE;
-/*!40000 ALTER TABLE `wp_states` DISABLE KEYS */;
-
-INSERT INTO `wp_states` (`id`, `name`, `range_cep1_start`, `range_cep1_end`, `range_cep2_start`, `range_cep2_end`)
-VALUES
-	('AC','Acre','69900000','69999999','',''),
-	('AL','Alagoas','57000000','57999999','',''),
-	('AM','Amazonas','69000000','69299999','69400000','69899999'),
-	('AP','Amapá','68900000','68999999','',''),
-	('BA','Bahia','40000000','48999999','',''),
-	('CE','Ceará','60000000','63999999','',''),
-	('DF','Distrito Federal','70000000','72799999','73000000','73699999'),
-	('ES','Espírito Santo','29000000','29999999','',''),
-	('GO','Goiás','72800000','72999999','73700000','76799999'),
-	('MA','Maranhão','65000000','65999999','',''),
-	('MG','Minas Gerais','30000000','39999999','',''),
-	('MS','Mato Grosso do Sul','79000000','79999999','',''),
-	('MT','Mato Grosso','78000000','78899999','',''),
-	('PA','Pará','66000000','68899999','',''),
-	('PB','Paraíba','58000000','58999999','',''),
-	('PE','Pernambuco','50000000','56999999','',''),
-	('PI','Piauí','64000000','64999999','',''),
-	('PR','Paraná','80000000','87999999','',''),
-	('RJ','Rio de Janeiro','20000000','28999999','',''),
-	('RN','Rio Grande do Norte','59000000','59999999','',''),
-	('RO','Rondônia','76800000','76999999','',''),
-	('RR','Roraima','69300000','69399999','',''),
-	('RS','Rio Grande do Sul','90000000','99999999','',''),
-	('SC','Santa Catarina','88000000','89999999','',''),
-	('SE','Sergipe','49000000','49999999','',''),
-	('SP','São Paulo','01000000','19999999','',''),
-	('TO','Tocantins','77000000','77999999','','');
-
-/*!40000 ALTER TABLE `wp_states` ENABLE KEYS */;
-UNLOCK TABLES;
-
 
